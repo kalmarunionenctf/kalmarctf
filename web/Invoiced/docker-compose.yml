@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  app:
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FLAG=kalmar{fr33_r34l_3st4t3_c91ad62}
+    ports:
+      - 127.0.0.1:5000:5000

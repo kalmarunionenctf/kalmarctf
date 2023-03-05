@@ -1,0 +1,197 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Some University SSO",
+    "version": "1.0.0",
+    "title": "SSO"
+  },
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New user",
+            "schema": {
+              "$ref": "#/definitions/Credentials"
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "produces": [
+          "text/html"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "service",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login page"
+          },
+          "301": {
+            "description": "Redirect to service"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "text/html"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "service",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "password",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "301": {
+            "description": "Redirect to service"
+          },
+          "401": {
+            "description": "Invalid username or password"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "Logged out"
+          }
+        }
+      }
+    },
+    "/validate": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "produces": [
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "service",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "ticket",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully validated ticket or invalid ticket for service",
+            "schema": {
+              "$ref": "#/definitions/TicketSuccessResponse"
+            }
+          },
+          "400": {
+            "description": "Missing ticket or service",
+            "schema": {
+              "$ref": "#/definitions/TicketErrorResponse"
+            }
+          },
+          "401": {
+            "description": "Ticket is invalid",
+            "schema": {
+              "$ref": "#/definitions/TicketErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Credentials": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "TicketErrorResponse": {
+      "xml": {
+        "name": "response"
+      },
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "TicketSuccessResponse": {
+      "type": "object",
+      "xml": {
+        "name": "response"
+      },
+      "properties": {
+        "response": {
+          "type": "object",
+          "properties": {
+            "authenticationSuccess": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                }
+              }
+            },
+            "authenticationFailure": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "flag": "kalmar{fr33_r34l_3st4t3_c91ad62}",
+    "title": "Invoiced",
+    "description": "I opened this cool new webshop. Hope its secure",
+    "downloadable_files": [
+       "source.zip"
+    ],
+    "points": 500,
+    "unique_server_per_team": false,
+    "tags": [
+       "web"
+    ]
+  }

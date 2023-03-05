@@ -1,0 +1,71 @@
+version: "3" 
+
+services:
+  db:
+    image: mariadb:10.4
+    restart: unless-stopped
+    networks:
+      - db
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MARIADB_ROOT_PASSWORD: Izq4DE7QD3WqsqydpnTUiaBxfqDOtpaEcl6xZNCKe0TXRWOrA8UDinxacEIMS0kNNk3ko
+
+  sso:
+    build: sso
+    restart: unless-stopped
+    networks:
+      - internal
+      - db
+    environment:
+      DB_DATABASE: authentication
+      NODE_ENV: production
+    env_file:
+      - shared.env
+    depends_on:
+      - db
+
+  grade:
+    build: grade
+    restart: unless-stopped
+    networks:
+      - internal
+      - db
+    environment:
+      DB_DATABASE: grades
+      NODE_ENV: production
+      FLAG: 'CTF{w00000w_n0_m0re_sch00l_d9a821a}'
+    env_file:
+      - shared.env
+    depends_on:
+      - sso
+
+  proxy:
+    image: nginx
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    networks:
+      internal:
+        aliases:
+          - grade.vcap.me
+          - sso.vcap.me
+    depends_on:
+      - sso
+      - grade
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+
+  teacher:
+    build: teacher
+    restart: unless-stopped
+    networks:
+      - internal
+    env_file:
+      - shared.env
+    depends_on:
+      - grade
+
+networks:
+  internal:
+  db:

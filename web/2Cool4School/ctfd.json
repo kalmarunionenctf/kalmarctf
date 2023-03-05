@@ -1,0 +1,11 @@
+{
+    "flag": "CTF{w00000w_n0_m0re_sch00l_d9a821a}",
+    "title": "2Cool4School",
+    "description": "I just started at uni, but can't be bothered to show up. For some reason my Cyber Sec grade is F. Please help!",
+    "points": 500,
+    "unique_server_per_team": false,
+    "tags": [
+       "web",
+       "rev"
+    ]
+  }
