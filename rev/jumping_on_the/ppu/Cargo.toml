@@ -1,0 +1,16 @@
+[package]
+name = "game"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ps3-sys.path = "crates/ps3-sys"
+libm = "0.2.6"
+runty8.path = "crates/runty8/runty8"
+runty8-core.path = "crates/runty8/runty8-core"
+obfstr = "0.4.3"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+# strip = true

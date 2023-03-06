@@ -1,0 +1,77 @@
+# TODO: Configurable binary names, build dir, etc.
+
+title := "Celeste Classic"
+icon := "data/icon.png"
+# icon := "logo.png"
+sfo_xml := "data/metadata.xml"
+app_id := "NPEA00001"
+content_id := "NR1337-" + app_id + "_00-0000000000000001"
+
+clean:
+	rm -rf build/**
+	cargo clean
+
+[no-cd]
+check:
+	cargo check \
+		-Z unstable-options \
+		-Z build-std=core,alloc,panic_abort,compiler_builtins \
+		-Z build-std-features=panic_immediate_abort \
+		--target {{justfile_directory()}}/powerpc64-sony-lv2.json
+
+[no-cd]
+clippy:
+	cargo clippy \
+		-Z unstable-options \
+		-Z build-std=core,alloc,panic_abort,compiler_builtins \
+		-Z build-std-features=panic_immediate_abort \
+		--target {{justfile_directory()}}/powerpc64-sony-lv2.json
+
+[no-cd]
+fix:
+	cargo clippy \
+		-Z unstable-options \
+		-Z build-std=core,alloc,panic_abort,compiler_builtins \
+		-Z build-std-features=panic_immediate_abort \
+		--target {{justfile_directory()}}/powerpc64-sony-lv2.json \
+		--fix \
+		--allow-dirty
+
+build:
+	mkdir -p build
+	cargo build \
+		-Z unstable-options \
+		-Z build-std=core,alloc,panic_abort,compiler_builtins \
+		-Z build-std-features=panic_immediate_abort \
+		--target powerpc64-sony-lv2.json \
+		--out-dir build \
+		--release
+
+build-spu:
+	mkdir -p spu/build
+	cargo build \
+		--manifest-path spu/Cargo.toml \
+		-Z unstable-options \
+		-Z build-std=core,alloc,panic_abort,compiler_builtins \
+		-Z build-std-features=panic_immediate_abort \
+		--target spu/powerpcspe-unknown-none.json \
+		--out-dir build \
+		--release
+
+elf: build
+	sprxlinker build/game.elf
+
+self: elf
+	cp build/game.elf build/game-stripped.elf
+	# ppu-strip build/game-stripped.elf
+	make_self build/game-stripped.elf build/game.self
+	fself build/game-stripped.elf build/game.fake.self
+
+pkg: self
+	mkdir -p build/pkg/USRDIR
+	cp {{icon}} build/pkg/ICON0.PNG
+	make_self build/game-stripped.elf build/pkg/USRDIR/EBOOT.BIN {{content_id}}
+	sfo.py --title "{{title}}" --appid {{app_id}} -f {{sfo_xml}} build/pkg/PARAM.SFO
+	pkg.py --contentid {{content_id}} build/pkg/ build/game.pkg
+	cp build/game.pkg build/game.gnpdrm.pkg
+	package_finalize build/game.gnpdrm.pkg

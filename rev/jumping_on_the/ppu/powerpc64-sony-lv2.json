@@ -1,0 +1,55 @@
+{
+  "abi-return-struct-as-int": true,
+  "arch": "powerpc64",
+  "cpu": "ppc64",
+  "data-layout": "E-m:e-i64:64-n32:64",
+  "exe-suffix": ".elf",
+  "llvm-target": "powerpc64-sony-lv2",
+  "max-atomic-width": 64,
+  "linker": "ppu-gcc-cargo-wrapper",
+  "os": "freebsd",
+  "pre-link-args": {
+    "gcc": [
+      "-mhard-float",
+      "-fmodulo-sched",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-L/usr/local/ps3dev/ppu/lib",
+      "-L/usr/local/ps3dev/portlibs/ppu/lib",
+      "-L/usr/local/ps3dev/portlibs/ppu/modules/lib"
+    ]
+  },
+  "post-link-args": {
+    "gcc": [
+      "-lfont3d",
+      "-ltiny3d",
+      "-lrsx",
+      "-lsimdmath",
+      "-lgcm_sys",
+      "-lio",
+      "-lsysutil",
+      "-lrt",
+      "-llv2",
+      "-lsysmodule",
+      "-laudioplayer",
+      "-lmpg123",
+      "-logg",
+      "-lspu_sound",
+      "-laudio",
+      "-lm",
+      "-lspu_soundmodule",
+      "-lc",
+      "-lsysbase"
+    ]
+  },
+  "panic-strategy": "abort",
+  "relocation-model": "static",
+  "stack-probes": {
+    "kind": "inline"
+  },
+  "target-endian": "big",
+  "target-family": [
+    "unix"
+  ],
+  "target-pointer-width": "64"
+}

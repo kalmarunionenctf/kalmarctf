@@ -1,0 +1,11 @@
+[package]
+name = "runty8-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand.workspace = true
+itertools.workspace = true
+paste.workspace = true
+spin.workspace = true
+libm.workspace = true

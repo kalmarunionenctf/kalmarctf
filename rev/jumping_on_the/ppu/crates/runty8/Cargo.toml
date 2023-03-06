@@ -1,0 +1,21 @@
+[workspace]
+members = [
+  "runty8",
+  "runty8-core",
+  "runty8-runtime",
+  "runty8-event-loop"
+]
+
+[workspace.dependencies]
+rand = { version = "0.8.5", default-features = false, features = ["small_rng"] }
+itertools = { version = "*", default-features = false, features = [
+  "use_alloc",
+] }
+paste = "1.0.9"
+spin = { version = "*", default-features = false, features = [
+  "spin_mutex",
+  "lazy",
+  "mutex",
+] }
+libm = "0.2.6"
+ps3-sys = { path = "../ps3-sys" }

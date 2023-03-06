@@ -1,0 +1,7 @@
+[package]
+name = "ps3-sys"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+libc = { version = "0.2.139", default-features = false }
