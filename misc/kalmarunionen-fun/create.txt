@@ -1,0 +1,22 @@
+# Get bits from the flag.
+./stringtobin.py "kalmar{steady_hands}"
+# Wave around with a bno-055 drawing 1's and 0's in the air while reading the accelerometer 10 times per second. The handwaving takes about 10 minutes.
+
+# Script to record the bno055 readings while doing the hand waving.
+import time
+import os
+import board
+import busio
+import adafruit_bno055
+
+i2c = busio.I2C(board.SCL, board.SDA)
+sensor = adafruit_bno055.BNO055_I2C(i2c)
+sensor.calibration_status
+sensor.linear_acceleration
+
+f=open("test-sep-8-0.1.dat","w")
+while True:
+  #print(sensor.linear_acceleration)
+  d=f.write(str(sensor.linear_acceleration)+"\n")
+  time.sleep(0.1)
+f.close()

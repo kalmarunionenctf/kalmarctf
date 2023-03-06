@@ -1,0 +1,15 @@
+{
+  "flag": "kalmar{steady_hands}",
+  "title": "kalmarunionen-fun",
+  "description_first_take": "/me waves! Integrate! Integrate!",
+  "description": "I created my own magic wand using an Adafruit BNO055 Accelerometer! I wonder if people will be able to decipher what spells I cast? (Note: readings were done 10 times per second)",
+  "downloadable_files": [
+     "kalmar-fun.txt"
+  ],
+  "ready_for_the_ctf": true,
+  "unique_server_per_team": false,
+  "tags": [
+     "misc",
+     "hard"
+  ]
+}

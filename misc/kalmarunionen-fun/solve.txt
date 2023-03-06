@@ -1,0 +1,4 @@
+# First separate the values into symbols. This python script uses the pauses between the symbols to chop the readings into smaller files.
+python3 separator.py kalmar-fun.txt symbols
+# For each symbol file with a smaller amount of values, use the kalman filter implementation to get the positions from the accelerations, and then use the simple heuristic about width to determine if we're at a 0 or a 1. Output the 0 and 1's and use the bintostring.py script to convert them from binary 7-bit ascii to an ascii string.
+for f in symbols-{1..145}.txt; do python3 kf-solve.py "$f"; done | grep '^[01]' | tr -d '\n' | cut -b 6- | ./bintostring.py
