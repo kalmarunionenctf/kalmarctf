@@ -1,0 +1,13 @@
+{
+    "flag": "Kalmar{I-w4s-t0ld-celery-1s-h34lthy-f0r-ya}",
+    "title": "Healthy Calc",
+    "description": "Coming soon: premium subscription for fast calculations!",
+    "downloadable_files": [
+       "source-dummy-flag.zip"
+    ],
+    "tags": [
+        "web"
+    ],
+    "ready_for_the_ctf": true,
+    "unique_server_per_team": false
+}

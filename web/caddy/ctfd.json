@@ -1,0 +1,13 @@
+{
+    "flag": "kalmar{th1s-w4s-2x0d4ys-wh3n-C4ddy==2.4}",
+    "title": "Ez ⛳",
+    "description": "Heard 'bout that new 🏌️-webserver? Apparently HTTPS just works(!), but seems like _someone_ managed to screw up the setup, woops.  The flag.txt is deleted until I figure out that HTTPS and PHP stuff #hacker-proof",
+    "downloadable_files": [
+       "source-dummy-flag.zip"
+    ],
+    "tags": [
+        "web"
+    ],
+    "ready_for_the_ctf": true,
+    "unique_server_per_team": false
+}
