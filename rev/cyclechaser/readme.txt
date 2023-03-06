@@ -1,5 +1,6 @@
-Challenge written by @shalaamum, with assistance from killerdog
+Challenge written by Shalaamum, with assistance from killerdog
 
+Challenge name: Cyclechaser
 Category: Rev
 Number of solves: 70
 
