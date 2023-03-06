@@ -1,0 +1,12 @@
+# Create a flag file
+echo "kalmar{if_4t_first_you_d0nt_succeed_maybe_youre_us1ng_udp}" > flag.txt
+# Record trafic
+tcpdump -nn -l -i lo -w /tmp/swaal.pcap port 9999
+# Make a listener to bounce traffic up against
+nc -v -u -k -l 192.168.1.2 9999
+# Use client.py to send the flag a 100 times but with randomly nulled out characters each time
+for i in {1..100}; do ./client.py flag.txt; sleep 0.5; done
+# Get the pcap
+cp /tmp/swaal.pcap .
+# Compress the pcap
+gzip swaal.pcap

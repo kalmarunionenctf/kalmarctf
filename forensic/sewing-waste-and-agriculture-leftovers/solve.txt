@@ -1,0 +1,4 @@
+# Use tshark to extract the data bytes from the udp streams.
+tshark -2 -r swaal.pcap -R "udp.port==9999" -T fields -e data | tr -d '\n' | fold -w 120 | while read l; do echo "$l" | xxd -r -p | tr -d '\n'; echo; done > raw_bytes.txt
+# Take each position in the udp streams and take the unique values. This will look right in the shell as null bytes wont show.
+for i in {1..58}; do cat raw_bytes.txt | cut -b "$i" | sort -u | tr -d '\n'; done; echo

@@ -1,0 +1,14 @@
+{
+  "flag": "kalmar{if_4t_first_you_d0nt_succeed_maybe_youre_us1ng_udp}",
+  "title": "sewing-waste-and-agriculture-leftovers",
+  "description": "UDP - UNRELIABLE datagram protocol.",
+  "downloadable_files": [
+     "swaal.pcap.gz"
+  ],
+  "ready_for_the_ctf": true,
+  "unique_server_per_team": false,
+  "tags": [
+     "forensic",
+     "easy"
+  ]
+}
