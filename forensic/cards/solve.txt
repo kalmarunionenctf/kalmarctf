@@ -1,0 +1,2 @@
+Follow each of the 79 ftp sessions. Pair the directory that a connection is CWD'ing into and use it as position for the 1 byte of the flag
+that is retrieved from the flagpart.txt file in that directory.

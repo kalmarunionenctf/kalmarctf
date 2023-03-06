@@ -1,0 +1,14 @@
+{
+  "flag": "kalmar{shuffle_shuff1e_can_you_k33p_tr4ck_of_where_th3_cards_are_shuffl3d_n0w}",
+  "title": "cards",
+  "description": "Follow the shuffle.",
+  "downloadable_files": [
+     "cards.pcap.gz"
+  ],
+  "ready_for_the_ctf": true,
+  "unique_server_per_team": false,
+  "tags": [
+     "forensic",
+     "easy"
+  ]
+}

@@ -1,0 +1,12 @@
+# Create a ftp server in a docker container
+docker run --detach --env FTP_PASS=123 --env FTP_USER=user --name my-ftp-server --publish 20-21:20-21/tcp --publish 40000-40009:40000-40009/tcp --volume /data:/home/user garethflowers/ftp-server
+# Create a flag file
+echo "kalmar{shuffle_shuff1e_can_you_k33p_tr4ck_of_where_th3_cards_are_shuffl3d_n0w}" > flag.txt
+# Split flag into 1-byte files
+split -b 1 --suffix-length=3 --numeric-suffixes=342 flag.txt
+# Put the 1-byte flag files into directories that are named by their position (arbitrarily starting from 342 - off by 342?)
+for f in x*; do i=$(echo "$f" | sed -e 's/x//'); mkdir /data/$i; cp $f /data/$i/flagpart.txt; done
+# Dump traffic on veth... - interface that the docker container is using
+tcpdump -nn -l -i veth4d5c385 -w /tmp/cards.pcap not port 1900 and not arp and not port 5353
+# Retrieve all the flagpart.txt files, but in random order
+for i in {342..420}; do (sleep 1; echo "user user 123"; sleep 1; sleep $(($RANDOM%5)); echo "cd $i"; sleep $(($RANDOM%60)); echo "get flagpart.txt /dev/null"; sleep 1) | pftp -n localhost & done
