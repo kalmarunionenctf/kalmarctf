@@ -1,6 +1,6 @@
-Challenge written by @shalaamum
+Challenge by shalaamum
 
-Challenge name: Dreamhash
+Challenge name: DreamHash
 Category: Crypto
 Number of solves: 8
 
@@ -11,5 +11,6 @@ I fell asleep in my abstract algebra class and dreamt of this weird hash functio
 `nc {Remote server IP and PORT here}`
 ```
 
-Information and files given to players are in /public
-Files used to compile and host the challenge are in /internal_hosting
+Information and files given to players are in ./public/
+Files used to compile and host the challenge are in ./internal_hosting/
+A combined writeup and solution script is in ./solution/
