@@ -1,0 +1,1 @@
+{"pid": 0, "uid": 0, "program_path": "/bin/init", "load_method": "serial/COM0", "enviroment": { "user_ids": { "0": "root" }, "arguments": [ "/bin/init", "impress", "me", "please" ], "kernel_version": "v0", }, }
