@@ -191,6 +191,13 @@ def test_startvalue_works(rand, value):
 # the task is to keep looking for a better algorithm rather than implementing
 # it in C or Rust and hiring a big cluster.
 
+# Note that the claim that was proven in the writeup for CycleChaser shows that
+# map Z -> {0,1}^n that maps each integer v to (c_1, ..., c_n) with c_i being 1
+# iff the i-th Collatz step starting from v is odd, factors through Z/2^n.  The
+# algorithm that was described above is a constructive proof for the existence
+# of a right inverse to this map, so as both domain and codomain have 2^n
+# elements this is a bijection.
+
 
 # seq encodes which steps should be odd. It is an integer where the i-th bit
 # indicates that the i-th step should be an odd one.
