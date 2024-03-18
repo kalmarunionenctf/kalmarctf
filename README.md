@@ -1,5 +1,5 @@
 # KalmarCTF 2024
-Here we will mainly be releasing official writeups for KalmarCTF 2024. Official writeups will not be available from competition end, but will gradually come online by the authors.
+Here we will mainly be releasing solve scripts and official writeups for KalmarCTF 2024. Official writeups will not be available from competition end, but will gradually come online by the authors.
 
 ## Writeup Competition
 We encourage writeups and would like to honor the best 10 writeups with $50 each. In a good writeup we value thoughts and explaination instead of a pure solve scripts without any comments. We like the whole process, including what didn’t work. We don't like writeups created by ChatGPT.
