@@ -283,7 +283,7 @@ impl<T: PF> Prover<T> {
             }
         }
 
-        // Find the influence of on the challenge.
+        // Find the influence of each on the challenge.
         let chal_influence: Vec<T> = (0..2).map(|m| {
             let i = linear_pair[m];
             let row = i / self.code.k();
