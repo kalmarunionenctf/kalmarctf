@@ -15,5 +15,11 @@ Three challenges did not get solved during the CTF. As we would like to see solu
 
 Deadline for submission is March 24 at 17:00 UTC. Contact killerdog@kalmarunionen.dk for submission and proof of solve.
 
+NOTE: All three challenges have been solved!
+Congratulations to 
+@soon_haari for solving poLy1305CG
+@grhkm for solving Shipwrecked Lattices
+@Robin_Jadou for solving breakfaest
+
 ## Participant Writeups
 If you have a writeup and want to share it, feel free to create a pull request with it.
