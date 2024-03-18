@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  breakfaest:
+    build: .
+    ports:
+     - 8008:8008
+    restart: always

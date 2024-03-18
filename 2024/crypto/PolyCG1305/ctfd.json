@@ -1,0 +1,17 @@
+{
+    "title": "poLy1305CG",
+    "category": "CRYPTO",
+    "tags": [],
+    "description": "Adding a hash function to an LCG should be secure right?",
+    "flag": "Kalmar{this_is_all_kurenaifs_fault...}",
+    "author": "Lance",
+    "difficulty": "4 - HARD",
+    "ports": [],
+    "has_remote": false,
+    "special_deployment": false,
+    "individual_server": false,
+    "downloadable_files": [
+        "chal.py",
+        "output.txt"
+    ]
+}

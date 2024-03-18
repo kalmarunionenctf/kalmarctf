@@ -1,0 +1,20 @@
+[package]
+name = "breakfaest"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ark-bn254 = "0.3.0"
+ark-ff = "0.3.0"
+ark-r1cs-std = "0.3.1"
+ark-relations = "0.3.0"
+ark-serialize = "0.3.0"
+arkworks-native-gadgets = "1.2.0"
+arkworks-r1cs-gadgets = "1.2.0"
+arkworks-utils = { version = "1.0.1", features = ["poseidon_bn254_x5_3"] }
+ff = "0.13"
+rand = "0.8.5"
+sha2 = "0.10.8"
+volonym = { git = "https://github.com/holonym-foundation/vole-zk-prover.git", branch = "main" }
+serde_bare = "0.5.0"
+base64 = "0.22.0"

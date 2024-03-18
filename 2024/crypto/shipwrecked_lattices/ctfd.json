@@ -1,0 +1,17 @@
+{
+    "title": "Shipwrecked Lattices",
+    "category": "CRYPTO",
+    "tags": [],
+    "description": "A disoriented sailor accidentally dropped all his lattices in the ocean. Should be fine right?",
+    "flag": "kalmar{1s_th1s_l4tt1c3_b4s3d_crypt0?_meme.jpg}",
+    "author": "Jo_k_er",
+    "difficulty": "4 - HARD",
+    "ports": [],
+    "has_remote": false,
+    "special_deployment": false,
+    "individual_server": false,
+    "downloadable_files": [
+        "abstract.sage",
+        "output.txt"
+    ]
+}

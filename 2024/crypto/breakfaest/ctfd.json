@@ -1,0 +1,20 @@
+{
+    "title": "breakfaest",
+    "category": "CRYPTO",
+    "tags": [
+        "clone-and-pwn"
+    ],
+    "description": "I heard that you could use VOLE-in-the-head to make post-quantum signatures. Here's a signature scheme based on the Poseidon hash function. Can you create a forgery?\n\nHint to narrow the bug search: volonym's zero knowledge proofs are vulnerable, and can be forged for arbitrary statements.",
+    "flag": "Kalmar{SeEMS_l1KE-fI47-5hamir_Is-VI3Wed_AS_jUs7-a_SuGgE$TIOn}",
+    "author": "Lance",
+    "difficulty": "5 - Hardest",
+    "ports": [
+        "8008"
+    ],
+    "has_remote": true,
+    "special_deployment": false,
+    "individual_server": false,
+    "downloadable_files": [
+        "breakfaest-chal.tar.xz"
+    ]
+}
