@@ -1,0 +1,16 @@
+{
+    "title": "Snek 🐍",
+    "category": "MISC",
+    "tags": [],
+    "description": "Achtungdiebash v2.0!\nInspired by [_achtungdiebash_](https://github.com/kofoednielsen/achtungdiebash) the new and improved online multiplayer snake game is ready.\n\nSomeone keeps pwning the game, can you quickly review the ~200 lines of mostly bash and kick the cheater?\n\n**How to play:**\nSpawn a new game by connecting to any IP in 2a01:4f8:1c1c:d3ed::/64 on port 1336.\nShare the connection with your friends and have them join\nE.g:\n * `nc 2a01:4f8:1c1c:d3ed:$(($RANDOM%10000)):dead:beef:abcd 1336`\n * `nc 2a01:4f8:1c1c:d3ed:$(($RANDOM%10000)):dead:beef:abcd 1337` (use the same IP, you just generated above) -> Click w/a/s/d and `r` when ready\n * Share the IP with your friends and play online snake!\n\nCan't connect? Probably IPv6 is not working on your network - see README.txt in handout for how to debug",
+    "flag": "kalmar{mult1pl4y3r_sn3k_1n_b4sh_wh4t_c4n_p0ss1bl3_g0_wr0ng?}",
+    "author": "Søborg",
+    "difficulty": "1 - EASIEST",
+    "ports": [1336,1337,1338,1339],
+    "has_remote": true,
+    "special_deployment": true,
+    "unique_server": false,
+    "downloadable_files": [
+        "handout-snek.zip"
+    ]
+}

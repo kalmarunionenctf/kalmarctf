@@ -1,0 +1,14 @@
+services:
+  snek:
+    restart: unless-stopped
+    build:
+      context: .
+      ulimits:
+        nofile:
+          soft: 20000
+          hard: 40000
+    ports:
+     - 1336:1336
+     - 1337:1337
+     - 1338:1338
+     - 1339:1339
