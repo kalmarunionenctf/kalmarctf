@@ -1,0 +1,16 @@
+{
+    "title": "Ez ⛳ v2",
+    "category": "WEB",
+    "tags": [],
+    "description": "Caddy webserver is AWESOME, using a neat and compact syntax you can do a lot of powerful things, e.g. wanna know if your browser supports [HTTP3](https://http3.caddy.chal-kalmarc.tf)? Or [TLS1.3](https://tls13.caddy.chal-kalmarc.tf)? etc\n\nFlag is located at `GET /$(head -c 18 /dev/urandom | base64)` go fetch it.",
+    "flag": "kalmar{Y0_d4wg_I_h3rd_y0u_l1k3_templates_s0_I_put_4n_template_1n_y0ur_template_s0_y0u_c4n_readFile_wh1le_y0u_executeTemplate}",
+    "author": "Søborg",
+    "difficulty": "1 - EASIEST",
+    "ports": [80, 443],
+    "has_remote": true,
+    "special_deployment": false,
+    "unique_server": false,
+    "downloadable_files": [
+        "handout-caddy.zip"
+    ]
+}

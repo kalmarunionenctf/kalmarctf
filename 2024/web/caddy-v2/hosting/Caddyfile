@@ -1,0 +1,89 @@
+(sec_headers) {
+    root * /
+    header {
+        Content-Security-Policy "default-src 'none'; frame-ancestors 'none'; base-uri 'none';"
+        #Strict-Transport-Security "max-age=31537331; includeSubDomains; preload"
+        X-XSS-Protection 0
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy "no-referrer"
+    }
+}
+
+(html_reply) {
+    import sec_headers
+    header Content-Type text/html
+    templates
+    respond "<!DOCTYPE html><meta charset=utf-8><title>{http.request.host}</title><body>{args[0]}</body>"
+}
+
+(json_reply) {
+    templates {
+        # By default placeholders are not replaced for json
+        mime application/json
+    }
+    header Content-Type application/json
+    respond "{args[0]}"
+}
+
+(http_reply) {
+    tls {
+        alpn "{args[0]}"
+    }
+    map {args[0]} {proto_name} {
+        http/1.1 HTTP/1.1
+        h2 HTTP/2.0
+        h3 HTTP/3.0
+    }
+    @correctALPN `{http.request.proto} == {proto_name}`
+    respond @correctALPN "You are connected with {http.request.proto} ({tls_version}, {tls_cipher})."
+    import html_reply "You are connected with {http.request.proto} instead of {proto_name} ({tls_version}, {tls_cipher}). <!-- Debug: {http.request.uuid}-->"
+}
+
+(tls_reply) {
+    tls {
+        protocols {args[0]} {args[1]}
+    }
+    header Access-Control-Allow-Origin "*"
+    import json_reply {"tls_version":"{tls_version}","alpn":"{http.request.tls.proto}","sni":"{http.request.tls.server_name}","cipher_suite":"{http.request.tls.cipher_suite}"}
+}
+
+mtls.caddy.chal-kalmarc.tf {
+    tls {
+        client_auth {
+            mode require
+        }
+    }
+    templates
+    import html_reply `You are connected with client-cert {http.request.tls.client.subject}`
+}
+tls.caddy.chal-kalmarc.tf {
+    import tls_reply tls1.2 tls1.3
+}
+tls12.caddy.chal-kalmarc.tf {
+    import tls_reply tls1.2 tls1.2
+}
+tls13.caddy.chal-kalmarc.tf {
+    import tls_reply tls1.3 tls1.3
+}
+ua.caddy.chal-kalmarc.tf {
+    templates
+    import html_reply `User-Agent: {{.Req.Header.Get "User-Agent"}}`
+}
+http.caddy.chal-kalmarc.tf {
+    templates
+    import html_reply "You are connected with {http.request.proto} ({tls_version}, {tls_cipher})."
+}
+http1.caddy.chal-kalmarc.tf {
+    import http_reply http/1.1
+}
+http2.caddy.chal-kalmarc.tf {
+    import http_reply h2
+}
+http3.caddy.chal-kalmarc.tf {
+    import http_reply h3
+}
+
+caddy.chal-kalmarc.tf {
+    import html_reply `Hello! Wanna know you if your browser supports <a href="https://http1.caddy.chal-kalmarc.tf/">http/1.1</a>? <a href="https://http2.caddy.chal-kalmarc.tf/">http/2</a>? Or fancy for some <a href="https://http3.caddy.chal-kalmarc.tf/">http/3</a>?! Check your preference <a href="https://http.caddy.chal-kalmarc.tf/">here</a>.<br/>We also allow you to check <a href="https://tls12.caddy.chal-kalmarc.tf/">TLS/1.2</a>, <a href="https://tls13.caddy.chal-kalmarc.tf/">TLS/1.3</a>, <a href="https://tls.caddy.chal-kalmarc.tf/">TLS preference</a>, supports <a href="https://mtls.caddy.chal-kalmarc.tf/">mTLS</a>? Checkout your <a href="https://ua.caddy.chal-kalmarc.tf/">User-Agent</a>!<!-- At some point we might even implement a <a href="https://flag.caddy.chal-kalmarc.tf/">flag</a> endpoint! -->`
+}

@@ -1,0 +1,18 @@
+services:
+  caddy:
+    image: caddy:2.7.6-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./hosting/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./hosting/flag:/CVGjuzCIVR99QNpJTLtBn9:ro  # random filename, changed from handout.zip
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
+
