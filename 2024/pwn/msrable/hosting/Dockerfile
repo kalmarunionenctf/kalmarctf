@@ -6,7 +6,6 @@ RUN mkdir /app
 RUN useradd ctf
 
 COPY run.sh initramfs.cpio.gz bzImage /app
-COPY rnetd /
 
 USER ctf
 WORKDIR /app
