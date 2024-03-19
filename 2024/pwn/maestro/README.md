@@ -1,5 +1,6 @@
 # Maestro
 > 11 solves
+
 Here's a Kernel written entirely in Rust. Then it must be safe, right? right?
 <https://github.com/llenotre/maestro>
 
