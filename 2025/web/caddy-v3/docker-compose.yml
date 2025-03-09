@@ -1,0 +1,19 @@
+services:
+  caddy:
+    build: ./hosting
+    #network_mode: host
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    container_name: caddy-container
+    restart: unless-stopped
+
+volumes:
+  caddy_data:
+  caddy_config:

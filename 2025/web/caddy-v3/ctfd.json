@@ -1,0 +1,19 @@
+{
+    "title": "Ez ⛳ v3",
+    "category": "WEB",
+    "tags": [],
+    "description": "To get the flag, you need: the mTLS cert, connecting from localhost, ... and break by physics? Should be easy!\n\nChallenge note: the handout files contains `tls internal` while the hosted challenge has just `tls`.",
+    "flag": "kalmar{4n0th3r_K4lmarCTF_An0Th3R_C4ddy_Ch4ll}",
+    "author": "Søborg",
+    "difficulty": "1 - EASIEST",
+    "ports": [
+        "80",
+        "443"
+    ],
+    "has_remote": true,
+    "special_deployment": false,
+    "individual_server": false,
+    "downloadable_files": [
+        "caddy-handout.zip"
+    ]
+}
