@@ -1,29 +1,45 @@
-# KalmarCTF 2024
-Here we will mainly be releasing solve scripts and official writeups for KalmarCTF 2024. Official writeups will not be available from competition end, but will gradually come online by the authors.
+# KalmarCTF 2025
 
-## Writeup Competition
-We encourage writeups and would like to honor the best 10 writeups with $50 each. In a good writeup we value thoughts and explaination instead of a pure solve scripts without any comments. We like the whole process, including what didn’t work. We don't like writeups created by ChatGPT.
+This repository contains the source code for (some of) the challenges from KalmarCTF. Challenges will gradually be uploaded here after the CTF ends. If you want to see some specific challenges, please reach out to us through https://kalmarunionen.dk or social media.
 
-Writeups should be sent to flags@kalmarunionen.dk no later than Sunday, March 24 at 17:00 UTC. Either send the full writeup for us to host, or share a link to your own blog. We will share writeups on Github and Social Media after the submission deadline.
+We hope you had a blast and we are already looking forward to organizing KalmarCTF 2026!
 
-## Firstblood Prizes for Crypto
-Three challenges did not get solved during the CTF. As we would like to see solutions to those and to honor the large efforts for those being close to a solve, we are putting out prizes for firstblood on any of the following three challenges:
-
-    Shipwrecked Lattices
-    poLy1305CG
-    breakfaest
-
-Deadline for submission is March 24 at 17:00 UTC. Contact killerdog@kalmarunionen.dk for submission and proof of solve.
-
-NOTE: All three challenges have been solved!
-
-Congratulations to 
-
-@soon_haari for solving poLy1305CG
-
-@grhkm for solving Shipwrecked Lattices
-
-@Robin_Jadou for solving breakfaest
-
-## Participant Writeups
-If you have a writeup and want to share it, feel free to create a pull request with it.
+Challenge List:
+|Challenge  name               |Category  |# solves |
+|---                           |---       |---      |
+|laconic                       |crypto    |0        |
+|lance-hard?                   |crypto    |2        |
+|short circuit                 |crypto    |4        |
+|ZZKAoK                        |crypto    |6        |
+|MonoDOOM                      |crypto    |8        |
+|Not-so-complex multiplication |crypto    |77       |
+|basic sums                    |crypto    |83       |
+|Very Serious Cryptography     |crypto    |107      |
+|Paper Viper                   |misc      |2        |
+|Pycomment                     |misc      |2        |
+|RWX - Diamond                 |misc      |3        |
+|nix-build as a service        |misc      |6        |
+|RWX - Gold                    |misc      |12       |
+|babyKalmarCTF                 |misc      |107      |
+|RWX - Silver                  |misc      |169      |
+|RWX - Bronze                  |misc      |224      |
+|Maestro Revenge               |pwn       |4        |
+|KalmarVM                      |pwn       |5        |
+|loadall.js                    |pwn       |8        |
+|decore                        |pwn       |10       |
+|Merger                        |pwn       |15       |
+|Snake III - Hungry for Snake  |rev       |0        |
+|Snake II - Sonic Snake Fighter II|rev    |0        |
+|Shafus Gone Crazy             |rev       |1        |
+|Jormungandr                   |rev       |10       |
+|Shafus                        |rev       |16       |
+|FlagSecurityEngine            |rev       |41       |
+|Snake I - Just One More Apple |rev       |62       |
+|spukhafte Fernwirkung         |web       |0        |
+|No SQLi                       |web       |3        |
+|Red wEDDIng                   |web       |8        |
+|KalmarDSL                     |web       |14       |
+|G0tchaberg                    |web       |25       |
+|KalmarNotes                   |web       |51       |
+|DNXSS-over-HTTPS              |web       |57       |
+|Ez ⛳ v3                      |web       |93       |
