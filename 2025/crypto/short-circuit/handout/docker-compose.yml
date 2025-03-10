@@ -1,0 +1,6 @@
+services:
+  chal:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 1337:1337
