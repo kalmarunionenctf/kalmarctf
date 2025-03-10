@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Note Storage</h1>
+  <textarea id="noteInput" rows="4" cols="50"></textarea>
+  <br>
+  <button onclick="saveNote()">Save Note</button>
+
+  <script>
+    function uuidv4() {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+        .replace(/[xy]/g, function (c) {
+            const r = Math.random() * 16 | 0, 
+                v = c == 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+    }
+
+    function saveNote() {
+      const note = document.getElementById('noteInput').value;
+      const uuid = uuidv4();
+
+      fetch('/note', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ uuid, note })
+      });
+    }
+  </script>
+</body>
+</html>
