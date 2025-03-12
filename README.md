@@ -4,7 +4,18 @@ This repository contains the source code for (some of) the challenges from Kalma
 
 We hope you had a blast and we are already looking forward to organizing KalmarCTF 2026!
 
-Challenge List:
+## Scoreboard
+
+Congrats to the winning teams!
+🥇 - organizers
+🥈 - Blue Water
+🥉 - Tower of Hanoi
+4️⃣ - r3kapig
+5️⃣ - about:blankets
+6️⃣ - The Flat Network Society
+
+## Challenges
+
 |Challenge  name               |Category  |# solves |
 |---                           |---       |---      |
 |laconic                       |crypto    |0        |

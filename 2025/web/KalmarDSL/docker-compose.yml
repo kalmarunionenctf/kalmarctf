@@ -1,0 +1,8 @@
+services:
+  tomcat:
+    build: ./hosting
+    ports:
+      # People might already have stuff running on port 8080, so use less popular port 8281
+      - "8281:8080"
+    container_name: struct-container
+    restart: unless-stopped
