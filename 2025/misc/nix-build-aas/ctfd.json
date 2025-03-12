@@ -1,0 +1,18 @@
+{
+    "title": "nix-build as a service",
+    "category": "MISC",
+    "tags": [
+        "nix"
+    ],
+    "description": "Reproducible pwning is back! This time we learned our lesson and instead of full SSH access you can only request building a derivation. Surely you won't be able to leak anything this time?\n\nThe comments in the code could be rather helpful.\nEveryone gets their own instance for this challenge. You can request one here: https://spawn.nix-build-as-a-service.chal-kalmarc.tf/. Don't share your instance link with anyone outside your team!\nTo run the instance locally, unpack the handout and run `nix run .#qemu`. The spawned VM will give you root shell access, as well as bind the web UI at localhost:8080.",
+    "flag": "kalmar{wow-no-way-reproducible-pwning-got-a-sequel}",
+    "author": "nrabulinski",
+    "difficulty": "3 - MEDIUM",
+    "ports": [],
+    "has_remote": true,
+    "special_deployment": true,
+    "individual_server": false,
+    "downloadable_files": [
+        "nix-handout.tar.xz"
+    ]
+}

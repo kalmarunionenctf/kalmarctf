@@ -1,0 +1,46 @@
+@import url("/static/Iosevka.css");
+
+.success {
+  color: #3a5;
+}
+
+.failure {
+  color: #c22;
+}
+
+pre {
+  max-height: 20lh;
+  overflow: scroll;
+}
+
+textarea {
+  width: 100%;
+  width: -moz-available;
+  width: -webkit-fill-available;
+  width: fill-available;
+  width: stretch;
+  height: 20lh;
+  overflow-x: scroll;
+  resize: vertical;
+  overflow-wrap: normal;
+  white-space: pre;
+}
+
+pre, textarea {
+  padding: 1em;
+  background: #222;
+  color: #ddd;
+  font-size: 1rem;
+}
+
+body {
+  background: #000;
+  color: #ddd;
+  display: flex;
+  justify-content: center;
+}
+
+#main {
+  max-width: 800px;
+  padding-bottom: 8em;
+}

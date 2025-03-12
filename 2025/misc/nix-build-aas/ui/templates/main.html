@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+  	<title>Nix jail</title>
+  	<link href="/static/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="main">
+      <h1>nix-build as a service</h1>
+      {% if let Some(status) = status %}
+        {% match status %}
+          {% when Status::Success %}
+            <p class="success">Derivation built succesfully</p>
+          {% when Status::Failure %}
+            <p class="failure">Building derivation failed</p>
+        {% endmatch %}
+      {% endif %}
+      {% if !last_line.is_empty() %}
+        <p>Last log line:</p>
+        <pre><code>{{last_line}}</code></pre>
+      {% endif %}
+      <form method="post">
+        {% for file in files %}
+          <div>
+            <p>{{ file.name }}</p>
+            <pre><code>{{ file.contents }}</code></pre>
+          </div>
+        {% endfor %}
+        <div>
+          <p>user-input.nix</p>
+          <textarea name="user_input" autocomplete="off" autocorrect="off">{{ user_input }}</textarea>
+        </div>
+        <button type="submit">Build</button>
+      </form>
+    </div>
+  </body>
+</html>

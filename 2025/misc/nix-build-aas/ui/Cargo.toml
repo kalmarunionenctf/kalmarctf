@@ -1,0 +1,16 @@
+[package]
+name = "ui"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+askama = { version = "0.12.1", features = ["with-axum"] }
+askama_axum = "0.4.0"
+axum = { version = "0.7", features = ["macros"] }
+color-eyre = "0.6.3"
+futures = "0.3.31"
+serde = { version = "1.0.218", features = ["derive"] }
+tempfile = "3.17.1"
+tokio = { version = "1.43.0", features = ["full"] }
+tokio-stream = { version = "0.1.17", features = ["full"] }
+tower-http = { version = "0.6.2", features = ["fs"] }
