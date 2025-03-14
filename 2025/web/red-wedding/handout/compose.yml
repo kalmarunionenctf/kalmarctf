@@ -1,0 +1,21 @@
+# Direct copy from https://github.com/labsai/EDDI/blob/main/docker-compose.yml
+services:
+  eddi:
+    # image: labsai/eddi:latest
+    build: .
+#    environment:
+#      - "JAVA_OPTS_APPEND=-Dquarkus.http.cors.origins=http://localhost:3000"
+    ports:
+      - "7070:7070"
+      # - "7443:7443"
+#      - "5005:5005"
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo:5.0
+    restart: always
+    volumes:
+      - mongodb-db:/data/db
+
+volumes:
+  mongodb-db:
