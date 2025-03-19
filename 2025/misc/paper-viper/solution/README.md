@@ -1,8 +1,6 @@
 # Paper Viper
 
-```
-There's been a snake escape at the Toronto zoo recently, which was by all accounts, a rather embarrassing affair. Snakes, as it turns out, are distressingly good at ignoring human notions of "inside" and "outside". As a measure to keep their own snakes well-contained, the zookeepers here at the Copenhagen zoo have taken to deploying a state-of-the-art absolutely impenetrable cage. At least, that's what the advertising brochure said.
-```
+> There's been a snake escape at the Toronto zoo recently, which was by all accounts, a rather embarrassing affair. Snakes, as it turns out, are distressingly good at ignoring human notions of "inside" and "outside". As a measure to keep their own snakes well-contained, the zookeepers here at the Copenhagen zoo have taken to deploying a state-of-the-art absolutely impenetrable cage. At least, that's what the advertising brochure said.
 
 **Author**: Ward  
 **Flag**: `kalmar{d0nt_play_w1th_5n4kes_if_you_don7_h4ve_gl0v3s}`  
