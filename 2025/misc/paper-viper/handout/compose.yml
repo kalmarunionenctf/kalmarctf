@@ -1,0 +1,6 @@
+services:
+  paper_viper:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 6843:6843

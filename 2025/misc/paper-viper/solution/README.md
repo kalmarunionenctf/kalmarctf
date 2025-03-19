@@ -1,5 +1,9 @@
 # Paper Viper
 
+```
+There's been a snake escape at the Toronto zoo recently, which was by all accounts, a rather embarrassing affair. Snakes, as it turns out, are distressingly good at ignoring human notions of "inside" and "outside". As a measure to keep their own snakes well-contained, the zookeepers here at the Copenhagen zoo have taken to deploying a state-of-the-art absolutely impenetrable cage. At least, that's what the advertising brochure said.
+```
+
 **Author**: Ward  
 **Flag**: `kalmar{d0nt_play_w1th_5n4kes_if_you_don7_h4ve_gl0v3s}`  
 
@@ -11,7 +15,7 @@ In the Dockerfile we find that `numpy` is installed, and `asteval` with version 
 
 ## The challenge:
 The challenge description is a reference to UofTCTF (shout out to SteakEnthusiast), in which there were three challenges on `asteval`, a "safe sandboxing" library for python.
-After that CTF a few of the vulnerabilities in the library were fixed, but as anyone familiar with pyjails will know, sandboxing python is very difficult to achieve with the amount of introspection the language has, and things like unpatched memory bugs in cpython. In the case of `asteval`, `numpy` is included by default, which dramatically worsens these issues.
+After that CTF a few of the vulnerabilities in the library were fixed, but as anyone familiar with pyjails will know, sandboxing python is very difficult to achieve with the amount of introspection the language has and e.g. unpatched memory bugs in cpython. In the case of `asteval`, `numpy` is included by default, which dramatically worsens these issues.
 
 After that CTF I went and did some more research into `asteval` and found a few 0days, some of which I turned into this challenge.
 
@@ -58,14 +62,16 @@ Specifically these filters are to block:
 `byte` and `bytearray`, `dtype`, `type` (the numpy attribute), `ctypes`, `format`, `buffer` and dict unwrapping as a way to pass keyword arguments to functions in a way to bypass text filters (since the dictionary keys are string literals that can be constructed past the filter).
 
 ## The solution:
-During the CTF there were two solves, by two familiar faces when it comes to pyjails, from MMM and oh_word from Infobahn.
+During the CTF there were two solves, by two familiar faces when it comes to pyjails, by Lyndon from MMM and oh_word from Infobahn.
 
-oh_word's solve went the intended route to obtain `type` and then did memory exploitation, presumably via the bytes class object.
+oh_word's solve went the intended route to obtain `type` and then did memory exploitation.
+
+Lyndon's solve was an unintended solution based on an intended route for the UofTCTF challenges.
 
 ### Getting a type primitive:
 The challenge source contains a strong hint to try to obtain a `type` primitive via the one exposed `numpy` function `genfromtxt`. Having `type` would allow us to obtain references to class objects of builtin types but also of `asteval`-internal types for which we have access to their instances.
 
-The easiest way to find this is to do some smart searches in the `numpy` library. E.g. if we search for `type(self.` we get 4 results, of which only 2 aren't in test files. More broad searches will also find it, though we would have more work in eliminating occurrences where either the arguments aren't user-controlled, or the results won't be reachable from the calling context.
+The easiest way to find this is to do some smart searches in the `numpy` library. E.g. if we search for "`type(self.`" we get 4 results, of which only 2 aren't in test files. More broad searches will also find it, though we would have more work in eliminating occurrences where either the arguments aren't user-controlled, or the results won't be reachable from the calling context.
 
 From the two results we get there is one in `MaskedArray.count`:
 ```python
@@ -124,7 +130,7 @@ t = mf[0]
 
 Having a type primitive, some of the logical next steps to look are instances of `asteval` classes that are available from within the sandbox, such as `Procedure`. User-defined functions within the sandbox are turned into `Procedure` objects in `asteval`.
 
-In `asteval`, the sandbox is interpreted by having the source code parsed into an ast using `ast.parse` and then having evaluating this ast using a node visitor pattern, with functions for nodes to implement the effects that executing that node should have, with an attempt at filters on what effects to allow.
+In `asteval`, the sandbox is implemented by having the source code parsed into an AST using `ast.parse` and then having evaluating this AST using a node visitor pattern, with functions for nodes to implement the effects that executing that node should have, with an attempt at filters on what effects to allow.
 
 ### Overriding class level dunders to leak the interpreter object:
 
@@ -255,9 +261,9 @@ print(i)
 We now have a reference to the `Interpreter`.
 
 ### Profit:
-At this point there are a variety of options. It's a very strong object that hasn't been written with security in mind.
+At this point we have a variety of options. The `asteval` `Interpreter` is an object with powerful functions that hasn't been written with security in mind.
 The easiest option is to use the import functionality.
-A fun alternative option is to evade the filters on attribute names in `safe_getattr` by creating a fake subtype of string and overwriting the `id` attribute of an `ast.Name` node with it, but I'll leave that as a fun exercise for the reader.
+A fun alternative option is to evade the filters on attribute names in `safe_getattr` by creating a fake subtype of string and overwriting the `id` attribute of an `ast.Name` node with it, but I'll leave that as an exercise for the reader.
 
 ```python
 # Import and escape the jail
