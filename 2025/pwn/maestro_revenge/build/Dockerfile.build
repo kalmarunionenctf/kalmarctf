@@ -1,0 +1,25 @@
+# docker build -o maestro-build -t maestro -f Dockerfile.build .
+FROM ubuntu:24.04 AS build
+ENV PROFILE=release
+ENV ARCH=x86_64
+
+RUN apt update && apt install -y rustup build-essential clang git && cp /usr/bin/ld /usr/bin/x86_64-elf-ld
+RUN git clone https://github.com/maestro-os/maestro.git && cd maestro && git checkout b064df737345d4f98c7773a2dccaddfff5f9bbd0 && \
+    sed -i 's/\[profile\.release\]/\[profile\.release\]\ndebug = true/g' /maestro/kernel/Cargo.toml && \
+    sed -i 's/\/\/ TODO 0x03c => syscall!(exit, frame)/0x03c => syscall!(_exit, frame)/g' /maestro/kernel/src/syscall/mod.rs && \
+    sed -i 's/\/\/ TODO 0x0dd => syscall!(fadvise64, frame)/0x0dd => syscall!(fadvise64_64, frame)/g' /maestro/kernel/src/syscall/mod.rs
+
+# Build the kernel
+RUN cd /maestro/kernel && cargo build --release --target arch/$ARCH/$ARCH.json
+
+# Build the libserial kernel module
+COPY maestro-serial /maestro-serial
+RUN cd /maestro-serial && /maestro/mod/build
+
+# Build the kernel module
+FROM scratch AS export
+ENV PROFILE=release
+ENV ARCH=x86_64
+COPY --from=build /maestro/kernel/target/$ARCH/$PROFILE/maestro .
+COPY --from=build /maestro-serial/target/$ARCH/$PROFILE/libserial.so .
+

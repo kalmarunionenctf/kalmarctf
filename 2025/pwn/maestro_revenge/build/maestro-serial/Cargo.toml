@@ -1,0 +1,22 @@
+cargo-features = ["profile-rustflags"]
+
+[package]
+name = "serial"
+version = "0.1.0"
+authors = ["Myldero"]
+edition = "2021"
+
+[lib]
+path = "src/mod.rs"
+crate-type = ["dylib"]
+
+[dependencies]
+
+[profile.release]
+panic = "abort"
+
+[profile.dev]
+rustflags = [
+	"-Cforce-frame-pointers=yes"
+]
+
