@@ -1,0 +1,21 @@
+services:
+  ctfd:
+    build: .
+    user: root
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - UPLOAD_FOLDER=/var/CTFd/uploads
+      - DATABASE_URL=sqlite:////var/CTFd/ctfd.db
+      - WORKERS=1
+      - ACCESS_LOG=-
+      - ERROR_LOG=-
+      - FLAG=kalmar{w0w_y0u_b34t_k4lm4r_1n_4_c7f?!?}
+    # volumes:
+    #   - .data/CTFd:/var/CTFd
+    networks:
+        default:
+
+networks:
+    default:

@@ -1,0 +1,6 @@
+services:
+  very_serious_cryptography:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 2257:2257

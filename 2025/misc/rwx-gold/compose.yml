@@ -1,0 +1,5 @@
+services:
+  rwx:
+    build: .
+    ports:
+      - "6664:6664"
