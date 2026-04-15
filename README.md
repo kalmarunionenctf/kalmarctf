@@ -4,14 +4,14 @@ This repository contains the source code for (some of) the challenges from Kalma
 
 ## Scoreboard
 
-Congrats to the winning teams!
-🥇 - sarrus
-🥈 - FMC
+Congrats to the winning teams! \
+🥇 - sarrus \
+🥈 - FMC \
 🥉 - rasmusfaber
 
-And also for the human scoreboard!
-🥇 - mhackeroni
-🥈 - The Flat Network Society
+And also for the human scoreboard! \
+🥇 - mhackeroni \
+🥈 - The Flat Network Society \
 🥉 - P3ak
 
 ## Challenges
@@ -30,7 +30,7 @@ And also for the human scoreboard!
 |Git Hoarder                   |misc    |171   |68      |
 |ReLuess Your Inihbitions      |misc    |203   |48      |
 |Where's Your HEAD At?         |misc    |214   |43      |
-|__pyjail__                    |misc    |243   |33      |
+|\_\_pyjail\_\_                |misc    |243   |33      |
 |nix-revenge                   |misc    |268   |27      |
 |impossible pygolf             |misc    |448   |9       |
 |Astralogy                     |pwn     |165   |73      |
